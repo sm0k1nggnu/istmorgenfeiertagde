@@ -14,6 +14,7 @@ $(document).ready(function() {
   
   var holidayTitle = $("#yes-or-no");
   var holidayDescription = $(".description");
+  var holidayLocation = $(".location");
   holidayDescription.hide();
   
   var currentTime = new Date();
@@ -56,7 +57,7 @@ $(document).ready(function() {
 	["SN", "Sachsen"],
 	["ST", "Sachsen-Anhalt"],
 	["SH", "Schleswig-Holstein"],
-	["BY", "Saarbrücken"],
+	["TH", "Thüringen"],
   ]
   
   //get easter date, important for most holidays with variable dates
@@ -86,8 +87,8 @@ $(document).ready(function() {
   var holidays = ["newYear", "threeKings", "greenThursday", "goodFriday", "easterSun", "easterMon", "labourDay", "christHeaven", "whitsunSun", "whitsunMon", "happyCadaver", "dafuqIsDis", "mariaInTheSkyWithDiamonds", "unity", "reformation", allSaints, "prayDay", "firstDayOfChristmas", "secondDayOfChristmas"];
   
   //TODO: check if following days are free too and give hints for long weekends 
-  var newYear = new holiday("Neujahr","Foobar", "","01.01.",1);
-  var threeKings = new holiday("Heilige Drei Könige", "Foobar","", "06.01", 0);
+  var newYear = new holiday("Neujahr","Der Neujahrstag ist der erste Tag im Kalenderjahrs.", "Neujahr","01.01.",1);
+  var threeKings = new holiday("Heilige Drei Könige", "Heilige Drei K&ouml;nige (auch Epiphanias/Dreik&ouml;nigstag) feiert den Besuch der Weisen des Jesuskindes, bzw. die Taufe Christi.","Erscheinung_des_Herrn", "06.01", "Baden-W&uuml;rttemberg, Bayern, Sachsen-Anhalt");
   var greenThursday = new holiday("Gründonnerstag", "Foobar","", "", 0); //Ostern -3
   var goodFriday = new holiday("Karfreitag", "Foobar","","", 1); //Ostern -2
   var easterSun = new holiday("Ostersonntag", "Foobar","", "", 0);
@@ -103,8 +104,8 @@ $(document).ready(function() {
   var reformation = new holiday("Reformationstag","","31.10.",0);
   var allSaints = new holiday("Allerheiligen","Allerheiligen ist ein christlicher Feiertag, an dem Heiligen gedacht wird, auch solchen, die nicht offiziell heilig gesprochen wurden.", "Allerheiligen","01.11.",[]);
   var prayDay = new holiday("Buß- und Bettag","","",0); //Mittwoch vor 23.11.
-  var firstDayOfChristmas = new holiday("1. Weihnachtsfeiertag","","25.12.",1);
-  var secondDayOfChristmas = new holiday("2. Weihnachtsfeiertag","","26.12.",1);
+  var firstDayOfChristmas = new holiday("1. Weihnachtsfeiertag","Weihnachten ist das Fest zur Geburt Jesu Christi und ist neben Ostern und Pfingsten der wichtigste christliche Feiertag.","Weihnachten","25.12.",[]);
+  var secondDayOfChristmas = new holiday("2. Weihnachtsfeiertag","Der zweite Weihnachtsfeiertag oder Stephanitag (Boxing Day in UK) ist der Gedenktag für den ersten christlichen M&auml;rtyrer Stephanus.","Zweiter_Weihnachtsfeiertag","26.12.",[]);
   
   var easterDate = [[2012, "08.04"], [2013, "31.03"], [2014, "20.04"], [2015, "05.04"]];  
   
@@ -120,6 +121,7 @@ $(document).ready(function() {
 		  holidayDescription.show();
 		  $(".description-title").html("Und zwar ist morgen " + globalholidayArray[i].name);
 	      holidayDescription.html(globalholidayArray[i].description);
+	      holidayLocation.html(globalholidayArray[i].where);
 		  $(".description-wiki").html("<a href=\"http://de.wikipedia.org/wiki/" + globalholidayArray[i].wiki + "\">Wikipedia-Eintrag zu " + globalholidayArray[i].name + "</a>");
 	    } else {
 	

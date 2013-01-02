@@ -111,23 +111,10 @@ textarea {
 
 footer {
 	position: absolute;	
-	bottom: 0;
+	top: 600px;
 	left: 50%;
-	margin-left: -70px;
+	margin-left: -100px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
