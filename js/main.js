@@ -88,7 +88,7 @@ $(document).ready(function() {
   
   //TODO: check if following days are free too and give hints for long weekends 
   var newYear = new holiday("Neujahr","Der Neujahrstag ist der erste Tag im Kalenderjahrs.", "Neujahr","01.01.",1);
-  var threeKings = new holiday("Heilige Drei Könige", "Heilige Drei K&ouml;nige (auch Epiphanias/Dreik&ouml;nigstag) feiert den Besuch der Weisen des Jesuskindes, bzw. die Taufe Christi.","Erscheinung_des_Herrn", "06.01", "Baden-W&uuml;rttemberg, Bayern, Sachsen-Anhalt");
+  var threeKings = new holiday("Heilige Drei K&ouml;nige", "Heilige Drei K&ouml;nige (auch Epiphanias/Dreik&ouml;nigstag) feiert den Besuch der Weisen des Jesuskindes, bzw. die Taufe Christi.","Erscheinung_des_Herrn", "06.01.", "Baden-W&uuml;rttemberg, Bayern, Sachsen-Anhalt");
   var greenThursday = new holiday("Gründonnerstag", "Foobar","", "", 0); //Ostern -3
   var goodFriday = new holiday("Karfreitag", "Foobar","","", 1); //Ostern -2
   var easterSun = new holiday("Ostersonntag", "Foobar","", "", 0);
@@ -115,7 +115,8 @@ $(document).ready(function() {
 	for (var i=0; i<globalholidayArray.length; i++) {
 	  var holidayName = globalholidayArray[i];
 	  var holidayDesc = "holidayName".description;
-	  //console.log(globalholidayArray[i].name);
+	  //console.log(globalholidayArray[i].name + globalholidayArray[i].date + globalholidayArray[i].where);
+	  //console.log(tmmrw + " " + globalholidayArray[i].date)
 	    if (tmmrw == globalholidayArray[i].date) {
 		  holidayTitle.html("<h1 id=\"yes-or-no\">Ja!</h1>");
 		  holidayDescription.show();
