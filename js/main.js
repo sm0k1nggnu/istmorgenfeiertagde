@@ -43,7 +43,7 @@ $(document).ready(function() {
 
   var states = [
 	["BY", "Bayern"],
-	["BW", "Baden-W�rtemberg"],
+	["BW", "Baden-Würtemberg"],
 	["BE", "Berlin"],
 	["BB", "Brandenburg"],
 	["HB", "Bremen"],
@@ -57,7 +57,7 @@ $(document).ready(function() {
 	["SN", "Sachsen"],
 	["ST", "Sachsen-Anhalt"],
 	["SH", "Schleswig-Holstein"],
-	["TH", "Th�ringen"],
+	["TH", "Thüringen"],
   ]
   
   //get easter date, important for most holidays with variable dates
@@ -89,9 +89,9 @@ $(document).ready(function() {
   //TODO: check if following days are free too and give hints for long weekends 
   var newYear = new holiday("Neujahr","Der Neujahrstag ist der erste Tag im Kalenderjahrs.", "Neujahr","01.01.",1);
   var threeKings = new holiday("Heilige Drei K&ouml;nige", "Heilige Drei K&ouml;nige (auch Epiphanias/Dreik&ouml;nigstag) feiert den Besuch der Weisen des Jesuskindes, bzw. die Taufe Christi.","Erscheinung_des_Herrn", "06.01.", "Baden-W&uuml;rttemberg, Bayern, Sachsen-Anhalt");
-  var greenThursday = new holiday("Gr�ndonnerstag", "Foobar","", "", 0); //Ostern -3
-  var goodFriday = new holiday("Karfreitag", "Foobar","","", 1); //Ostern -2
-  var easterSun = new holiday("Ostersonntag", "Foobar","", "", 0);
+  var greenThursday = new holiday("Gründonnerstag", "Gründonnerstag ist der fünfte Tag der Karwoche. An ihm gedenken die christlichen Kirchen des letzten Abendmahles Jesu mit den zwölf Aposteln am Vorabend seiner Kreuzigung.","Gründonnerstag", "28.03.", "Kein gesetzlicher Feiertag, aber in Baden-Württemberg oft schulfrei."); //Ostern -3
+  var goodFriday = new holiday("Karfreitag", "Der Karfreitag (althochdeutsch kara, „Klage, Kummer, Trauer“) ist der Freitag vor Ostern. Er folgt auf den Gründonnerstag und geht dem Karsamstag voraus. Christen gedenken an diesem Tag des Kreuzestodes Jesu Christi.","Karfreitag","29.03.", "deutschlandweit"); //Ostern -2
+  var easterSun = new holiday("Ostersonntag", "Der Ostersonntag ist im Christentum der Festtag der Auferstehung Jesu Christi. Es ist der ranghöchste Feiertag im Kirchenjahr. Mit ihm beginnen das Osterfest und die Osterzeit.","Ostersonntag", "31.03.", "deutschlandweit");
   var easterMon = new holiday("Ostermontag", "Foobar","", "", 1);
   var labourDay = new holiday("Tag der Arbeit", "Foobar","", "01.05", 1);
   var christHeaven = new holiday("Christi Himmelfahrt", "Foobar","", "", 1); //Ostern + 39
@@ -99,13 +99,13 @@ $(document).ready(function() {
   var whitsunMon = new holiday("Pfingstmontag", "Foobar","", "", 1); //Ostern + 50
   var happyCadaver = new holiday("Fronleichname", "Foobar","", "", 0); //Ostersonntag +60
   var dafuqIsDis = new holiday("Augsburger Friedenfests", "Foobar","", "08.08.", 0);
-  var mariaInTheSkyWithDiamonds = new holiday("Mari� Himmelfahrt", "Foobar","", "15.08.", 0);
+  var mariaInTheSkyWithDiamonds = new holiday("Mariä Himmelfahrt", "Foobar","", "15.08.", 0);
   var unity = new holiday("Tag der Deutschen Einheit", "Foobar","", "03.10.", 1);
   var reformation = new holiday("Reformationstag","","31.10.",0);
   var allSaints = new holiday("Allerheiligen","Allerheiligen ist ein christlicher Feiertag, an dem Heiligen gedacht wird, auch solchen, die nicht offiziell heilig gesprochen wurden.", "Allerheiligen","01.11.",[]);
-  var prayDay = new holiday("Bu�- und Bettag","","",0); //Mittwoch vor 23.11.
+  var prayDay = new holiday("Buß- und Bettag","","",0); //Mittwoch vor 23.11.
   var firstDayOfChristmas = new holiday("1. Weihnachtsfeiertag","Weihnachten ist das Fest zur Geburt Jesu Christi und ist neben Ostern und Pfingsten der wichtigste christliche Feiertag.","Weihnachten","25.12.",[]);
-  var secondDayOfChristmas = new holiday("2. Weihnachtsfeiertag","Der zweite Weihnachtsfeiertag oder Stephanitag (Boxing Day in UK) ist der Gedenktag f�r den ersten christlichen M&auml;rtyrer Stephanus.","Zweiter_Weihnachtsfeiertag","26.12.",[]);
+  var secondDayOfChristmas = new holiday("2. Weihnachtsfeiertag","Der zweite Weihnachtsfeiertag oder Stephanitag (Boxing Day in UK) ist der Gedenktag für den ersten christlichen M&auml;rtyrer Stephanus.","Zweiter_Weihnachtsfeiertag","26.12.",[]);
   
   var easterDate = [[2012, "08.04"], [2013, "31.03"], [2014, "20.04"], [2015, "05.04"]];  
   
