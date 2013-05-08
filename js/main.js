@@ -92,9 +92,9 @@ $(document).ready(function() {
   var greenThursday = new holiday("Gründonnerstag", "Gründonnerstag ist der fünfte Tag der Karwoche. An ihm gedenken die christlichen Kirchen des letzten Abendmahles Jesu mit den zwölf Aposteln am Vorabend seiner Kreuzigung.","Gründonnerstag", "28.03.", "Kein gesetzlicher Feiertag, aber in Baden-Württemberg oft schulfrei."); //Ostern -3
   var goodFriday = new holiday("Karfreitag", "Der Karfreitag (althochdeutsch kara, „Klage, Kummer, Trauer“) ist der Freitag vor Ostern. Er folgt auf den Gründonnerstag und geht dem Karsamstag voraus. Christen gedenken an diesem Tag des Kreuzestodes Jesu Christi.","Karfreitag","29.03.", "deutschlandweit"); //Ostern -2
   var easterSun = new holiday("Ostersonntag", "Der Ostersonntag ist im Christentum der Festtag der Auferstehung Jesu Christi. Es ist der ranghöchste Feiertag im Kirchenjahr. Mit ihm beginnen das Osterfest und die Osterzeit.","Ostersonntag", "31.03.", "deutschlandweit");
-  var easterMon = new holiday("Ostermontag", "Foobar","", "", 1);
-  var labourDay = new holiday("Tag der Arbeit", "Foobar","", "01.05", 1);
-  var christHeaven = new holiday("Christi Himmelfahrt", "Foobar","", "", 1); //Ostern + 39
+  var easterMon = new holiday("Ostermontag", "","Ostermontag", "01.04.", "deutschlandweit");
+  var labourDay = new holiday("Tag der Arbeit", "Der Erste Mai wird auch als Tag der Arbeit, Maifeiertag oder Kampftag der Arbeiterbewegung bezeichnet.","Erster_Mai", "01.05.", "Feiertag in ganz Deutschland, Österreich und der Schweiz");
+  var christHeaven = new holiday("Christi Himmelfahrt", "Christi Himmelfahrt (griechisch ἡ Ἀνάληψις τοῦ Κυρίου ‚die Aufnahme des Herrn‘, lateinisch Ascensio Domini ‚Aufstieg des Herrn‘, in der Schweiz und Liechtenstein: Auffahrt) bezeichnet im christlichen Glauben die Rückkehr Jesu Christi als Sohn Gottes zu seinem Vater in den Himmel.","Christi_Himmelfahrt", "09.05.", "deutschlandweit"); //Ostern + 39
   var whitsunSun = new holiday("Pfingstsonntag", "Foobar","", "", 0); //Ostern +49
   var whitsunMon = new holiday("Pfingstmontag", "Foobar","", "", 1); //Ostern + 50
   var happyCadaver = new holiday("Fronleichname", "Foobar","", "", 0); //Ostersonntag +60
