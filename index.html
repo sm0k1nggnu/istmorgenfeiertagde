@@ -1,30 +1,50 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ist morgen Feiertag?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.1.min.js"></script>
-		<script type="text/javascript">
-			/* <![CDATA[ */
-			(function() {
-				var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-				s.type = 'text/javascript';
-				s.async = true;
-				s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-				t.parentNode.insertBefore(s, t);
-			})();
-			/* ]]> */</script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2528511-5']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript">
+      /* <![CDATA[ */
+      (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+      })();
+      /* ]]> */</script>
       <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -32,46 +52,100 @@
         js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=110257969122074";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));</script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
+  </head>
 
-        <!-- Add your site or application content here -->
-		<div id="main">
-			<div id="flattr">
-				<a class="FlattrButton" style="display:none;" href="http://istmorgenfeiertag.de"></a>
-				<noscript><a href="http://flattr.com/thing/970056/Ist-morgen-Feiertag" target="_blank">
-					<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
-				</a></noscript>
-<div class="fb-like" data-href="http://istmorgenfeiertag.de" data-send="true" data-width="450" data-show-faces="true"></div>
-			</div>
-			<p class="date">01.01.2000</p>
-			<p>Ist morgen Feiertag?</p>
-			<h1 id="yes-or-no">Leider nein!</h1>
-			<p class="daystillnext"></p>
-			<p class="description-title"></p>
-			<p class="description"></p>
-			<p class="location"></p>
-			<p class="description-wiki"></p>
-		</div>
-		
-		<footer>
-			made by <a href="http://twitter.com/sm0k1nggnu">@sm0k1nggnu</a> / <a href="http://captain-obvious.de/impressum/">Impressum</a> &copy; <a href="http://davidmay.de">David May</a>
-		</footer>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+<div class="container">
+  <div class="row-fluid">
+    <div id="flattr">
+        <a class="FlattrButton" style="display:none;" href="http://istmorgenfeiertag.de"></a>
+        <noscript><a href="http://flattr.com/thing/970056/Ist-morgen-Feiertag" target="_blank">
+          <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
+        </a></noscript>
+      <div class="fb-like" data-href="http://istmorgenfeiertag.de" data-send="true" data-width="450" data-show-faces="true">
+      </div>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="page-header">
+  <h1>Ist morgen Feiertag?</h1>
+</div>
+  </div>
+</div>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-2528511-5'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-    </body>
+<div id="main" class="container">
+  <div class="row-fluid">
+      <div class="span4 offset4"><p class="date">01.01.2000</p></div>
+  </div>
+  <div class="row-fluid">
+      <div class="span4 offset4"><p>Ist morgen Feiertag?</p></div>
+  </div>
+  <div class="row-fluid">
+      <div class="span2 offset5"><h1 id="yes-or-no">Leider nein!</h1></div>
+  </div>
+  <div class="row-fluid">
+      <div class="span2 offset4"><p class="daystillnext"></p></div>
+  </div>
+  <div class="row-fluid">
+      <div class="span4 offset4"><p class="description-title"></p></div>
+  </div>
+  <div class="row-fluid">
+      <div class="span6 offset3"><p class="description"></p></div>
+  </div>
+  <div class="row-fluid">
+      <div class="span4 offset4"><p class="location"></p></div>
+  </div>
+  <div class="row-fluid">
+      <div class="span4 offset4"><p class="description-wiki"></p></div>
+  </div>
+  <div class="row-fluid">
+    <hr class="soften">
+  </div>
+</div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span6 offset4">
+          <p>made by <a href="http://twitter.com/sm0k1nggnu">@sm0k1nggnu</a> / <a href="http://captain-obvious.de/impressum/">Impressum</a> &copy; <a href="http://davidmay.de">David May</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/application.js"></script>
+
+
+    <!-- Analytics
+    ================================================== -->
+    <script>
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+
+  </body>
 </html>
