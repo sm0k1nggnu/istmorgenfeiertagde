@@ -3,7 +3,7 @@
 
 # TEAM
 
-    David May -- Developer -- @sm0k1nggnu
+    <name> -- <role> -- <twitter>
 
 # THANKS
 
