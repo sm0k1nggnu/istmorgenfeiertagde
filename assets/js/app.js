@@ -23,6 +23,7 @@ $(document).ready(function() {
   var year = currentTime.getFullYear();
   var dayOfWeek = currentTime.getDay();
   var dOWInWords = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
+  var dOWInWordsE = new Array("Sun", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat");
   var hrs = ((hrs < 10) ? "0" + hrs : hrs); //add a 0 to 1 digit numbers
   var mnts = ((mnts < 10) ? "0" + mnts : mnts);
   var scnds = ((scnds < 10) ? "0" + scnds : scnds);
@@ -34,7 +35,7 @@ $(document).ready(function() {
   var dayPlus = ((dayPlus < 10) ? "0" + dayPlus : dayPlus);
   var monthPlus = ((monthPlus < 10) ? "0" + monthPlus : monthPlus);
   var tmmrw = dayPlus +  "." + monthPlus + ".";
-  
+
   /*//dayaftertomorrow
   currentTime.setDate(currentTime.getDate() + 2);
   var dayPlus = currentTime.getDate();
@@ -45,7 +46,7 @@ $(document).ready(function() {
 
   holidayTitle.html("<h1 id=\"yes-or-no\"><i class='fa fa-frown-o'></i><br>Leider nein</h1>");
   //tmmrw = "01.05.";
-  
+
   //Push holidays in array
   function holiday(name, description, wiki, date, where) {
     this.name = name;
@@ -57,9 +58,9 @@ $(document).ready(function() {
   }
 
   //show todays date
-  $(".date").html("Heute ist " + dOWInWords[dayOfWeek] + ", der " + day + "." + month + "." + year); //change date to today 
+  $(".date").html("Heute ist " + dOWInWords[dayOfWeek] + ", der " + day + "." + month + "." + year); //change date to today
 
-  //state abbrevations 
+  //state abbrevations
   var states = {
     'BY' : 'Bayern',
     'BW' : 'Baden-Würtemberg',
@@ -80,16 +81,31 @@ $(document).ready(function() {
     'AUG': 'nur in Augsburg',
     'ALL': 'Deutschlandweiter Feiertag'
   };
-  
+
+  var month = new Array();
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+
+
   //get easter date, important for most holidays with variable dates
   function easterForYear (y) {
     var a = year % 19;
     var b = Math.floor(year / 100);
     var c = year % 100;
-    var d = Math.floor(b / 4); 
+    var d = Math.floor(b / 4);
     var e = b % 4;
     var f = Math.floor((b + 8) / 25);
-    var g = Math.floor((b - f + 1) / 3); 
+    var g = Math.floor((b - f + 1) / 3);
     var h = (19 * a + b - d - g + 15) % 30;
     var i = Math.floor(c / 4);
     var k = c % 4;
@@ -101,113 +117,141 @@ $(document).ready(function() {
     var date = new Date(year,n,p);
     var easterMonth = date.getMonth() + 1;
     var easterDay = date.getDate();
-    //alert( easterDay + "." + easterMonth); 
+    var easterDayD = dOWInWordsE[date.getDay()];
+    var easterMonthM = month[date.getMonth()];
     var easterObj = {
       day   : easterDay,
-      month : easterMonth
+      weekDay : easterDayD,
+      month : easterMonth,
+      monthM : easterMonthM
     }
-  return easterObj;
+    return easterObj;
   }
-  
-  /*function easterDates () {
-    if (easterForYear(year).day > 3 ) {
-      greenThursday = easterForYear(year).day - 3 + "." easterForYear(year).month //-3
-      goodFriday    = easterForYear(year).day - 2 + "." easterForYear(year).month //-2
-    }
-    greenThursday = easterForYear(year).day - 3 //-3
-    goodFriday = //-2
-    easterSun  //+0
-    easterMon  //+1
-    christHeaven //+39
-    whitsunSun  //+49
-    whitsunMon        //+50
-    happyCadaver //+60
-  }*/
 
-  //TODO: check if following days are free too and give hints for long weekends 
+  //easter sunday
+  //console.log(easterForYear(2017).day);
+  //console.log(easterForYear(2017).monthM);
+  function easterDates () {
+    var easterSun = Date.parse(easterForYear(2017).monthM + easterForYear(2017).day + ", " + year);
+    easterSun = new Date(easterSun);
+    eM = easterSun.getMonth()+1;
+    console.log(easterSun.getDate() + "." + eM + ".");
+
+    var greenThursday = new Date(easterSun.setDate(easterSun.getDate() - 3));
+    eM = greenThursday.getMonth()+1;
+    console.log(greenThursday.getDate() + "." + eM + ".");
+
+    var goodFriday    = new Date(greenThursday.setDate(greenThursday.getDate() + 1));
+    eM = goodFriday.getMonth()+1;
+    console.log(goodFriday.getDate() + "." + eM + ".");
+
+    var easterMon     = new Date(goodFriday.setDate(goodFriday.getDate() + 3));
+    eM = easterMon.getMonth()+1;
+    console.log(easterMon.getDate() + "." + eM + ".");
+
+    var christHeaven  = new Date(easterMon.setDate(easterMon.getDate() + 38));
+    eM = christHeaven.getMonth()+1;
+    console.log(christHeaven.getDate() + "." + eM + ".");
+
+    var whitesunSun   = new Date(christHeaven.setDate(christHeaven.getDate() + 10));
+    eM = whitesunSun.getMonth()+1;
+    console.log(whitesunSun.getDate() + "." + eM + ".");
+
+    var whitesunMon   = new Date(whitesunSun.setDate(whitesunSun.getDate() + 1));
+    eM = whitesunMon.getMonth()+1;
+    console.log(whitesunMon.getDate() + "." + eM + ".");
+
+    var happyCadaver  = new Date(whitesunMon.setDate(whitesunMon.getDate() + 10));
+    eM = happyCadaver.getMonth()+1;
+    console.log(happyCadaver.getDate() + "." + eM + ".");
+
+  }
+  easterDates();
+
+  //TODO: check if following days are free too and give hints for long weekends
   //1 means: holiday everywhere
   var newYear       = new holiday("Neujahr",
-                                  "Der Neujahrstag ist der erste Tag im Kalenderjahrs.", 
+                                  "Der Neujahrstag ist der erste Tag im Kalenderjahrs.",
                                   "Neujahr",
                                   "01.01.",
                                   [states['ALL']],
                                   "");
-  var threeKings    = new holiday("Heilige Drei K&ouml;nige", 
+  var threeKings    = new holiday("Heilige Drei K&ouml;nige",
                                   "Heilige Drei K&ouml;nige (auch Epiphanias/Dreik&ouml;nigstag) feiert den Besuch der Weisen des Jesuskindes, bzw. die Taufe Christi.",
-                                  "Erscheinung_des_Herrn", 
-                                  "06.01.", 
+                                  "Erscheinung_des_Herrn",
+                                  "06.01.",
                                   [states['BY'], states['BW'], states['ST']],
                                   "");
-  var greenThursday = new holiday("Gründonnerstag", 
+  var greenThursday = new holiday("Gründonnerstag",
                                   "Gründonnerstag ist der fünfte Tag der Karwoche. An ihm gedenken die christlichen Kirchen des letzten Abendmahles Jesu mit den zwölf Aposteln am Vorabend seiner Kreuzigung.",
-                                  "Gründonnerstag", 
+                                  "Gründonnerstag",
                                   "24.03.",
-                                  [states['ALL']], 
+                                  [states['ALL']],
                                   "Kein gesetzlicher Feiertag, aber in Baden-Württemberg oft schulfrei."); //Ostern -3
-  var goodFriday    = new holiday("Karfreitag", 
+  var goodFriday    = new holiday("Karfreitag",
                                   "Der Karfreitag (althochdeutsch kara, „Klage, Kummer, Trauer“) ist der Freitag vor Ostern. Er folgt auf den Gründonnerstag und geht dem Karsamstag voraus. Christen gedenken an diesem Tag des Kreuzestodes Jesu Christi.",
                                   "Karfreitag",
                                   //easterForYear(year).day,
-                                  "25.03.", 
+                                  "25.03.",
                                   [states['ALL']],
                                   ""); //Ostern -2
-  var easterSun     = new holiday("Ostersonntag", 
+  var easterSun     = new holiday("Ostersonntag",
                                   "Der Ostersonntag ist im Christentum der Festtag der Auferstehung Jesu Christi. Es ist der ranghöchste Feiertag im Kirchenjahr. Mit ihm beginnen das Osterfest und die Osterzeit.",
-                                  "Ostersonntag", 
-                                  "27.03.", 
+                                  "Ostersonntag",
+                                  "27.03.",
                                   [states['ALL']],
                                   "");
-  var easterMon     = new holiday("Ostermontag", 
+  var easterMon     = new holiday("Ostermontag",
                                   "",
-                                  "Ostermontag", 
-                                  "28.03.",  
+                                  "Ostermontag",
+                                  "28.03.",
                                   [states['ALL']],
                                   "");
-  var labourDay     = new holiday("Tag der Arbeit", 
+  var labourDay     = new holiday("Tag der Arbeit",
                                   "Der Erste Mai wird auch als Tag der Arbeit, Maifeiertag oder Kampftag der Arbeiterbewegung bezeichnet.",
-                                  "Erster_Mai", 
+                                  "Erster_Mai",
                                   "01.05.",
-                                  [states['ALL']], 
+                                  [states['ALL']],
                                   "Feiertag in ganz Deutschland, Österreich und der Schweiz");
-  var christHeaven  = new holiday("Christi Himmelfahrt", 
+  var christHeaven  = new holiday("Christi Himmelfahrt",
                                   "Christi Himmelfahrt (griechisch ἡ Ἀνάληψις τοῦ Κυρίου ‚die Aufnahme des Herrn‘, lateinisch Ascensio Domini ‚Aufstieg des Herrn‘, in der Schweiz und Liechtenstein: Auffahrt) bezeichnet im christlichen Glauben die Rückkehr Jesu Christi als Sohn Gottes zu seinem Vater in den Himmel.",
-                                  "Christi_Himmelfahrt", 
-                                  "05.05.", 
+                                  "Christi_Himmelfahrt",
+                                  "05.05.",
                                   [states['ALL']],
                                   ""); //Ostern + 39
-  var whitsunSun    = new holiday("Pfingstsonntag", 
+  var whitsunSun    = new holiday("Pfingstsonntag",
                                   "Foobar",
-                                  "", 
-                                  "15.05.", 
+                                  "",
+                                  "15.05.",
                                   [states['ALL']],
                                   ""); //Ostern +49
-  var whitsunMon    = new holiday("Pfingstmontag", 
+  var whitsunMon    = new holiday("Pfingstmontag",
                                   "Pfingsten (von griech. πεντηκοστή [ἡμέρα] pentekostē [hēmera]‚ „fünfzigster [Tag]“) ist ein christliches Fest. Gefeiert wird von den Gläubigen die Entsendung des Heiligen Geistes. Es wird am 50. Tag des Osterfestkreises, also 49 Tage nach dem Ostersonntag, begangen.",
-                                  "Pfingsten", 
-                                  "16.05.",  
+                                  "Pfingsten",
+                                  "16.05.",
                                   [states['ALL']],
                                   ""); //Ostern + 50
-  var happyCadaver  = new holiday("Fronleichnam", 
+  var happyCadaver  = new holiday("Fronleichnam",
                                   "Das Fronleichnamsfest, lat. Sollemnitas Sanctissimi Corporis et Sanguinis Christi[1] „Fest des heiligsten Leibes und Blutes Christi“, ist ein Hochfest im Kirchenjahr der katholischen Kirche, mit dem die leibliche Gegenwart Jesu Christi im Sakrament der Eucharistie gefeiert wird.",
-                                  "Fronleichnam", 
-                                  "26.05.", 
+                                  "Fronleichnam",
+                                  "26.05.",
                                   [states['BW'],states['BY'],states['HE'], states['NI'], states['NW'],states['SL']],
                                   ""); //Ostersonntag +60
-  var augsburgerPeace    = new holiday("Augsburger Friedenfest", 
+  var augsburgerPeace    = new holiday("Augsburger Friedenfest",
                                   "Foobar",
-                                  "", 
+                                  "",
                                   "08.08.",
                                   [states['AUG']],
                                   "");
-  var mariaHeaven   = new holiday("Mariä Himmelfahrt", 
+  var mariaHeaven   = new holiday("Mariä Himmelfahrt",
                                   "Mariä Himmelfahrtist ein Hochfest der römisch-katholischen Kirche, bei dem Mariä Aufnahme in den Himmel gefeiert wird.",
-                                  "Mariä_Aufnahme_in_den_Himmel", 
-                                  "15.08.", 
+                                  "Mariä_Aufnahme_in_den_Himmel",
+                                  "15.08.",
                                   [states['SL']],
                                   "Feiertag im Saarland und in katholischen Teilen Bayerns");
-  var unity         = new holiday("Tag der Deutschen Einheit", 
+  var unity         = new holiday("Tag der Deutschen Einheit",
                                   "Der 3. Oktober wurde als Tag der Deutschen Einheit im Einigungsvertrag 1990 zum gesetzlichen Feiertag in Deutschland bestimmt. Als deutscher Nationalfeiertag erinnert er an die deutsche Wiedervereinigung, die mit dem Wirksamwerden des Beitritts der Deutschen Demokratischen Republik zur Bundesrepublik Deutschland am 3. Oktober 1990 vollendet wurde.",
-                                  "Tag_der_Deutschen_Einheit", 
+                                  "Tag_der_Deutschen_Einheit",
                                   "03.10.",
                                   [states['ALL']],
                                   "In der gesamten BRD");
@@ -218,7 +262,7 @@ $(document).ready(function() {
                                   [states['BB'],states['MV'],states['SN'],states['ST'],states['TH']],
                                   "");
   var allSaints     = new holiday("Allerheiligen",
-                                  "Allerheiligen ist ein christlicher Feiertag, an dem Heiligen gedacht wird, auch solchen, die nicht offiziell heilig gesprochen wurden.", 
+                                  "Allerheiligen ist ein christlicher Feiertag, an dem Heiligen gedacht wird, auch solchen, die nicht offiziell heilig gesprochen wurden.",
                                   "Allerheiligen",
                                   "01.11.",
                                   [states['BW'],states['BY'],states['NW'],states['RP'],states['SL']],
@@ -239,8 +283,8 @@ $(document).ready(function() {
                                          "Zweiter_Weihnachtsfeiertag",
                                          "26.12.",
                                          [states['ALL']],
-                                         ""); 
-  
+                                         "");
+
   //console.log(states[0]);
   //console.log(globalholidayArray.length);
   for (i=0;i<globalholidayArray.length;i++) {
@@ -257,7 +301,7 @@ $(document).ready(function() {
     //console.log(tmmrw);
   }
   }
-  
+
   //check if holiday is possible so we don't have to check all the dates every time
   //TODO: make dynamic so site updates itself on midnight
   /*function checkHoliday(thisDay) {
@@ -266,7 +310,7 @@ $(document).ready(function() {
 
 
   function checkHoliday() {
-    
+
     for (var i=0; i<globalholidayArray.length; i++) {
       var holidayName = globalholidayArray[i];
       var holidayDesc = "holidayName".description;
@@ -290,12 +334,12 @@ $(document).ready(function() {
             daystillnextholiday.show();
           }
 
-          } 
+          }
         }
-  } 
+  }
 
   checkHoliday();
-  
+
 });
 
 //Angular
@@ -315,7 +359,7 @@ angular.module('weekendApp', [])
     $scope.weekdaySel = $scope.optionsD[4];
 
     $scope.daysUntil  = function() {return 5 - $scope.weekdaySel.value;;};
-    
+
     $scope.optionsT = [
       { label: "19", value: 7 },
       { label: "18", value: 6 },
@@ -323,7 +367,7 @@ angular.module('weekendApp', [])
       { label: "16", value: 4 },
       { label: "15", value: 3 },
     ];
-  $scope.timeSel = $scope.optionsT[2]; 
+  $scope.timeSel = $scope.optionsT[2];
   })
 .directive('myCurrentTime', function($timeout, dateFilter) {
   return function(scope, element, attrs) {
@@ -353,7 +397,7 @@ angular.module('weekendApp', [])
 
 //JS
 function Ctrl2($scope,$timeout) {
-  $scope.format = 'dd.MM.yyyy, HH:mm:ss'; 
+  $scope.format = 'dd.MM.yyyy, HH:mm:ss';
   angular.element(document).ready(function () {
      var ynm = $("#yes-no-maybe");
      bla = angular.element('[ng-controller=WeekendController]').scope()
@@ -363,7 +407,7 @@ function Ctrl2($scope,$timeout) {
       randNo = Math.floor(Math.random()*10);
      return colors[randNo]
      };
-  
+
   var currentTime = new Date();
   var hrs = currentTime.getHours();
   var mnts = currentTime.getMinutes();
@@ -376,13 +420,13 @@ function Ctrl2($scope,$timeout) {
   var hrs = ((hrs < 10) ? "0" + hrs : hrs); //add a 0 to 1 digit numbers
   var mnts = ((mnts < 10) ? "0" + mnts : mnts);
   var scnds = ((scnds < 10) ? "0" + scnds : scnds);
-  
+
   currentTime.setDate(currentTime.getDate() + 1);
   var dayPlus = currentTime.getDate();
   var monthPlus = currentTime.getMonth()+1;
   var dayPlus = ((dayPlus < 10) ? "0" + dayPlus : dayPlus);
   var monthPlus = ((monthPlus < 10) ? "0" + monthPlus : monthPlus);
-  
+
   var tmmrw = dayPlus +  "." + monthPlus + ".";
   var thisDay = day +  "." + month + ".";
 
@@ -392,20 +436,20 @@ function Ctrl2($scope,$timeout) {
   var feierabendDiffH = feierabendHour - hrs - 1
   var feierabendDiffM = 60 - mnts
   var feierabendDiffD = 5 - dayOfWeek
-  feierabendDiffD > 1 ? dayString = 'Tage' : dayString = 'Tag' 
-  feierabendDiffH == 1 ? hourString = 'Stunde' : hourString = 'Stunden' 
+  feierabendDiffD > 1 ? dayString = 'Tage' : dayString = 'Tag'
+  feierabendDiffH == 1 ? hourString = 'Stunde' : hourString = 'Stunden'
   //if we have let's say Wednesday, 18:00 we would get "2 days, -1 hour"
   feierabendDiffH = feierabendDiffH % 24
- 
-  
+
+
   if (dayOfWeek == feierabendDay) { //Freitag
     if (hrs >= feierabendHour) {
       ynm.text('Yes, Wochenende \\o/ (Falls du ' + dOWInWords[feierabendDay] + ', ' +  feierabendHour +' Uhr Feierabend hast). Ab nach Hause! Worauf wartest du?')
     } else {
       ynm.text("Fast geschafft \\o/")
       if (feierabendDiffH >= 1)
-        ynm.append('<p>Noch ' + feierabendDiffH + "h " + feierabendDiffM + 'm bis Feierabend! (' + dOWInWords[feierabendDay] + ', ' +  feierabendHour +' Uhr).</p>') 
-      else 
+        ynm.append('<p>Noch ' + feierabendDiffH + "h " + feierabendDiffM + 'm bis Feierabend! (' + dOWInWords[feierabendDay] + ', ' +  feierabendHour +' Uhr).</p>')
+      else
       ynm.append('<p>Noch ' + feierabendDiffM + 'm bis Feierabend! (' + dOWInWords[feierabendDay] + ', ' +  feierabendHour +' Uhr).</p>')
     }
   }
@@ -413,7 +457,7 @@ function Ctrl2($scope,$timeout) {
   if (dayOfWeek == 6 || dayOfWeek == 0) { //Samstag Sonntag
       ynm.text('Yes, Wochenende \\o/ (Falls du ' + dOWInWords[feierabendDay] + ', ' +  feierabendHour +' Uhr Feierabend hast)')
   }
-  
+
   if (dayOfWeek < feierabendDay && dayOfWeek > 0) { // Montag bis Freitag
     //if actual hours < Feierabend-hours
       ynm.text('Nein :( Bis zum Wochenende musst du noch ' + feierabendDiffD + ' ' + dayString + ' und ' + feierabendDiffH + ' ' + hourString + ' aushalten.')
@@ -426,6 +470,6 @@ function Ctrl2($scope,$timeout) {
     });
 };
 $(document).ready(function() {
-  
+
 
 });
