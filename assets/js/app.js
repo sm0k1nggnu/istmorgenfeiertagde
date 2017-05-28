@@ -43,7 +43,7 @@ $(document).ready(function() {
   var monthPlus = ((monthPlus < 10) ? "0" + monthPlus : monthPlus);
   var dayafter = dayPlus +  "." + monthPlus + ".";*/
 
-  holidayTitle.html("<h1 id=\"yes-or-no\">Leider nein :(</h1>");
+  holidayTitle.html("<h1 id=\"yes-or-no\"><i class='fa fa-frown-o'></i><br>Leider nein</h1>");
   //tmmrw = "01.05.";
   
 
@@ -253,7 +253,7 @@ $(document).ready(function() {
                                   "Allerheiligen ist ein christlicher Feiertag, an dem Heiligen gedacht wird, auch solchen, die nicht offiziell heilig gesprochen wurden.", 
                                   "Allerheiligen",
                                   "01.11.",
-                                  [states['BW'],states['BY'],states['BY'],states['NRW'],states['RP'],states['SL']],
+                                  [states['BW'],states['BY'],states['NW'],states['RP'],states['SL']],
                                   "");
   var prayDay       = new holiday("Buß- und Bettag",
                                   "",
@@ -311,7 +311,7 @@ $(document).ready(function() {
           $(".description-title").html("Und zwar ist morgen " + globalholidayArray[i].name);
           $('.twitter-share-button').data('[text = ""]')
           holidayDescription.html(globalholidayArray[i].description);
-          holidayLocation.html(globalholidayArray[i].where);
+          holidayLocation.html("Feiertag in: " + globalholidayArray[i].where);
           $(".description-wiki").html("<a href=\"http://de.wikipedia.org/wiki/" + globalholidayArray[i].wiki + "\">Wikipedia-Eintrag zu " + globalholidayArray[i].name + "</a>");
         } else {
           if (thisDay == globalholidayArray[i].date) {
