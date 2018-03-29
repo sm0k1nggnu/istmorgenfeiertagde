@@ -1,125 +1,27 @@
 <!DOCTYPE html>
-<html ng-app="weekendApp" lang="en">
+<html lang="de">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ist morgen Feiertag?</title>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+</head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <span class="header__date">
+        </span>
+      </div><!-- /header -->
+      <div class="content">
 
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- flattr -->
-    <script type="text/javascript">
-      /* <![CDATA[ */
-      (function() {
-        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-        t.parentNode.insertBefore(s, t);
-      })();
-      /* ]]> */</script>
-      <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=110257969122074";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-  </head>
-  <body ng-controller="WeekendController">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div id="flattr">
-          <a class="FlattrButton" style="display:none;" href="http://istmorgenfeiertag.de/"></a>
-          <noscript><a href="http://flattr.com/thing/970056/Ist-morgen-Feiertag" target="_blank">
-          <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
-        </div>
-        <div id="tweet">
-          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://istmorgenfeiertag.de" data-text="Dank dieser Seite weiß ich, dass morgen ein Feiertag ist." data-via="sm0k1nggnu" data-hashtags="Feiertag">Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        </div>
-        <div class="fb-like" data-href="http://istmorgenfeiertag.de" data-send="true" data-width="450" data-show-faces="true">  
-        </div>
-        <!--<div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300">
-        </div>-->
-        <div class="date navbar-right">
-          <div ng-controller="Ctrl2">
-            Heute ist der <span my-current-time="format"></span> Uhr
-          </div>
-        </div>
-      </div>    
-    </nav>
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="text-center" style="padding-top: 100px;">
-            <h1>Ist morgen Feiertag?</h1>
-            <p>Damit Feiertage nicht immer so überraschend kommen.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-2 col-md-offset-5 text-center" id="yes-or-no">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <p class="description-title"></p>
-          <p class="description"></p>
-          <p class="location"></p>
-          <p class="description-wiki"></p>
-        </div>
-      </div>
-   </div>
-
-   <div id="footer">
-     <div class="container">
-       <p class="text-muted">made with <i class="glyphicon glyphicon-heart"></i> by <a href="http://twitter.com/sm0k1nggnu">@sm0k1nggnu</a> / <a href="http://captain-obvious.de/impressum/">Impressum</a></p>
-       <p>stuff: <a href="http://istschonwochenen.de">Ist schon Wochenende?</a> | <a href="http://zwo.me">Zockwork Orange</a></p>
-     </div>
-   </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+      </div><!-- /content -->
+      <div class="footer">
+        <strong>istmorgenfeiertag.de</strong> warnt seit 2013 vor plötzlichen Feiertagen<br>
+        Ein kostenloser Service von David May /impressum /diesdas<br>
+        v2.0_2018: jetzt mit Feiertags-API von <a href="https://ipty.de/feiertag/">iPTY</a>
+      </div><!-- /footer -->
+    </div><!-- /wrap -->
     <script src="assets/js/app.js"></script>
-    
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-2528511-5']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
-    <script type="text/javascript">
-      window.___gcfg = {lang: 'de'};
-
-      (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-      })();
-    </script>
   </body>
 </html>
