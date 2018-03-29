@@ -1,76 +1,4 @@
-const dateArea = document.querySelector('.header__date');
-
-const contentArea = document.querySelector('.content');
-const holidayYesNo = document.createElement('div');
-holidayYesNo.setAttribute('class', 'is_holiday');
-const holidayTitle = document.createElement('h2');
-holidayTitle.setAttribute('class', 'holiday__title');
-const holidayDescription = document.createElement('div');
-holidayDescription.setAttribute('class', 'holiday__description');
-const holidayLocation = document.createElement('p');
-holidayLocation.setAttribute('class', 'holiday__location');
-
-
-  const getDatum = (day = 'today') => {
-    this.day = day;
-    if (day === 'today') {
-        var date = new Date();
-    }
-    if (day === 'tomorrow') {
-        var date = new Date();
-        date.setDate(date.getDate() + 1);
-    }
-    let dd = date.getDate();
-    let mm = date.getMonth()+1;
-    let yyyy = date.getFullYear();
-
-    if(dd<10) {dd = `0${dd}`}
-    if(mm<10) { mm = `0${mm}`}
-
-    return `${dd}.${mm}.${yyyy}`
-  }
-  dateArea.textContent = getDatum('today')
-
-  const setFeiertagDetails = function(data) {
-    holidayYesNo.textContent = 'Ja'
-    holidayTitle.textContent = `Morgen ist ${data.title}`
-    const description = holidayDescriptions.filter(desc => desc.title === data.title);
-    console.log(description)
-    holidayDescription.textContent = `${description[0].desc}`
-    let locs = data.locs
-    //locs.forEach(loc => console.log(loc) )
-    console.log(locs)
-    let holidayLocs = locs.reduce(
-      function(total, num){ return total + num + ',' }
-    ,'')
-    holidayLocation.textContent = `${data.title} ist ein Feiertag in ${holidayLocs}`
-  }
-
-  const istFeiertag = function(date = 'tomorrow') {
-    //console.log(date)
-    holidayYesNo.textContent = 'Nein'
-    let tomorrow = getDatum(date)
-    const morgenFeiertag = fetch(`https://ipty.de/feiertag/api.php?do=isFeiertagInfo&datum=${tomorrow}`);
-
-    morgenFeiertag
-    .then(data => data.json())
-    .then(data => {
-        //console.log(data)
-        data.isFeiertag == 1 ? setFeiertagDetails(data) : ''
-        ;
-    })
-    .catch((err) => {
-        console.error(err);
-  })
-  }
-
-  istFeiertag()
-  contentArea.appendChild(holidayYesNo);
-  contentArea.appendChild(holidayTitle);
-  contentArea.appendChild(holidayDescription);
-  contentArea.appendChild(holidayLocation);
-
-  let holidayDescriptions = [
+[
     {
     "title": "Neujahr",
     "date": "2018-01-01",
@@ -159,6 +87,6 @@ holidayLocation.setAttribute('class', 'holiday__location');
     "title": "2. Weihnachtstag",
     "date": "2018-12-26",
     "desc": "Der zweite Weihnachtsfeiertag oder Stephanitag (Boxing Day in UK) ist der Gedenktag für den ersten christlichen M&auml;rtyrer Stephanus.",
-    "wiki": "Zweiter_Weihnachtsfeiertag"
+    "wiki": "Zweiter_Weihnachtsfeiertag",
     }
     ]

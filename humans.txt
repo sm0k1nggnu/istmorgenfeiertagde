@@ -3,13 +3,18 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    David May -- everything -- @sm0k1nggnu
 
 # THANKS
 
-    <name>
+    ipty.de - for their API
+    Wes Bos - for his awesome coding tutorials (ES6, CSS Grid)
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3
-    jQuery, Modernizr
+    HTML5, CSS3 (CSS Grid)
+    JavaScript (ES6)
+    Fonts: Rubik, Lobster
+    ESLint
+    Visual Studio Code
+    Git
