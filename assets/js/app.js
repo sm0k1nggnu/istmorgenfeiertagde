@@ -35,11 +35,12 @@ holidayLocation.setAttribute('class', 'holiday__location');
     holidayYesNo.textContent = 'Ja'
     holidayTitle.textContent = `Morgen ist ${data.title}`
     const description = holidayDescriptions.filter(desc => desc.title === data.title);
-    console.log(description)
+    //console.log("desctiption" + description)
     holidayDescription.textContent = `${description[0].desc}`
+    console.log(data)
     let locs = data.locs
     //locs.forEach(loc => console.log(loc) )
-    console.log(locs)
+    //console.log(locs)
     let holidayLocs = locs.reduce(
       function(total, num){ return total + num + ',' }
     ,'')
@@ -50,8 +51,9 @@ holidayLocation.setAttribute('class', 'holiday__location');
     //console.log(date)
     holidayYesNo.textContent = 'Nein'
     let tomorrow = getDatum(date)
-    const morgenFeiertag = fetch(`https://ipty.de/feiertag/api.php?do=isFeiertagInfo&datum=${tomorrow}`);
-
+    const morgenFeiertag = fetch(`https://ipty.de/feiertag/api.php?do=isFeiertagInfo&datum=17.04.2022`);
+    //console.log(tomorrow)
+    //console.log(morgenFeiertag)
     morgenFeiertag
     .then(data => data.json())
     .then(data => {
@@ -89,6 +91,12 @@ holidayLocation.setAttribute('class', 'holiday__location');
     "desc": "Der Karfreitag (althochdeutsch kara, „Klage, Kummer, Trauer“) ist der Freitag vor Ostern. Er folgt auf den Gründonnerstag und geht dem Karsamstag voraus. Christen gedenken an diesem Tag des Kreuzestodes Jesu Christi.",
     "wiki": "Karfreitag"
     },
+    {
+      "title": "Ostersonntag",
+      "date": "2018-04-02",
+      "desc": "Der Ostersonntag ist im Christentum der Festtag der Auferstehung Jesu Christi, der nach dem Neuen Testament als Sohn Gottes den Tod überwunden hat. Es ist der ranghöchste Feiertag im Kirchenjahr. Mit ihm beginnen das Osterfest und die Osterzeit, zugleich beendet die liturgische Vesper des Ostersonntags das Triduum Sacrum (die heiligen drei Tage).",
+      "wiki": "Ostersonntag"
+      },
     {
     "title": "Ostermontag",
     "date": "2018-04-02",
