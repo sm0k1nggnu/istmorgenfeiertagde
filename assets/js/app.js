@@ -31,29 +31,37 @@ holidayLocation.setAttribute('class', 'holiday__location');
   }
   dateArea.textContent = getDatum('today')
 
+  function deUmlaut(value){
+    // value = value.toLowerCase();
+    value = value.replace(/ä/g, 'ae');
+    value = value.replace(/&ouml;/g, 'ö');
+    value = value.replace(/ü/g, 'ue');
+    value = value.replace(/ß/g, 'ss');
+    // value = value.replace(/ /g, '-');
+    // value = value.replace(/\./g, '');
+    // value = value.replace(/,/g, '');
+    // value = value.replace(/\(/g, '');
+    // value = value.replace(/\)/g, '');
+    return value;
+  }
+
   const setFeiertagDetails = function(data) {
     holidayYesNo.textContent = 'Ja'
-    holidayTitle.textContent = `Morgen ist ${data.title}`
+    holidayTitle.textContent = `Morgen ist ${deUmlaut(data.title)}`
     const description = holidayDescriptions.filter(desc => desc.title === data.title);
-    //console.log("desctiption" + description)
+    console.log("description" + description)
     holidayDescription.textContent = `${description[0].desc}`
-    console.log(data)
     let locs = data.locs
-    //locs.forEach(loc => console.log(loc) )
-    //console.log(locs)
     let holidayLocs = locs.reduce(
       function(total, num){ return total + num + ',' }
     ,'')
-    holidayLocation.textContent = `${data.title} ist ein Feiertag in ${holidayLocs}`
+    holidayLocation.textContent = `${deUmlaut(data.title)} ist ein Feiertag in ${holidayLocs}`
   }
 
   const istFeiertag = function(date = 'tomorrow') {
-    //console.log(date)
     holidayYesNo.textContent = 'Nein'
     let tomorrow = getDatum(date)
-    const morgenFeiertag = fetch(`https://ipty.de/feiertag/api.php?do=isFeiertagInfo&datum=17.04.2022`);
-    //console.log(tomorrow)
-    //console.log(morgenFeiertag)
+    const morgenFeiertag = fetch(`https://ipty.de/feiertag/api.php?do=isFeiertagInfo&datum=${tomorrow}`);
     morgenFeiertag
     .then(data => data.json())
     .then(data => {
@@ -80,7 +88,7 @@ holidayLocation.setAttribute('class', 'holiday__location');
     "wiki": "Neujahr"
     },
     {
-    "title": "Heilige drei Könige",
+    "title": "Heilige drei K&ouml;nige",
     "date": "2018-01-06",
     "desc": "Heilige Drei Könige (auch Epiphanias/Dreikönigstag) feiert den Besuch der Weisen des Jesuskindes, bzw. die Taufe Christi.",
     "wiki": "Erscheinung_des_Herrn"
